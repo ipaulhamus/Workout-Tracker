@@ -1,0 +1,16 @@
+.hidden
+{
+    display: none;
+}
+
+.feedback
+{
+    color: crimson;
+    font-style: italic;
+}
+
+.completed
+{
+    color: grey;
+    text-decoration: dashed;
+}

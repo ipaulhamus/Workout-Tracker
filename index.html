@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>We Fit Fitness Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="/css/index.css" rel="stylesheet">
+</head>
+<body>
+<main class="container">
+    <h1 class="mb-5">We Fit Fitness Tracker</h1>
+
+    <h4>Add a Workout</h4>
+<br />
+    <button id="workout-create-start" type="button" class="btn btn-primary">Create Workout</button>
+    <button id="timed-create-start" type="button" class="btn btn-primary">Create Timed Workout</button>
+<br />
+    <br />
+    <form id="add-workout-form" class="hidden"> <!-- class="hidden"> -->
+            <label for="workout-type" class="form-label">Exercise</label><br>
+            <input type="text" id="workout-type" name="workout-type" class="form-control w-25" required>
+        <br>
+
+            <label for="workout-sets" class="form-label">Sets</label><br>
+            <input type="number" id="workout-sets" name="workout-sets" class="form-control w-25" min="1" max="99" required>
+        <br>
+        <label for="workout-reps" class="form-label">Reps</label><br>
+        <input type="number" id="workout-reps" name="workout-reps" class="form-control w-25" min="1" max="99" required>
+        <br>
+        <button id="workout-create-submit" type="submit" class="btn btn-success">Submit Workout</button>
+    </form>
+    <form id="add-timed-form" class="hidden"> <!-- class="hidden"> -->
+        <label for="timed-type" class="form-label">Exercise</label><br>
+        <input type="text" id="timed-type" name="timed-type" class="form-control w-25" required>
+        <br>
+        <h5>Timed Workout Length:</h5>
+        <label for="timed-minutes" class="form-label">Minutes</label><br>
+        <input type="number" id="timed-minutes" name="timed-minutes" class="form-control w-25" min="0" max="99" required>
+        <label for="timed-seconds" class="form-label">Seconds</label><br>
+        <input type="number" id="timed-seconds" name="timed-seconds" class="form-control w-25" min="1" max="59" required>
+        <br>
+        <button id="timed-create-submit" type="submit" class="btn btn-success">Submit Workout</button>
+    </form>
+    <br>
+    <h4>Workouts:</h4>
+    <br>
+        <table id="workout-list" class="table table-striped w-50" >
+            <tr>
+                <th>ID</th>
+                <th>Exercise</th>
+                <th>Sets</th>
+                <th>Reps-Per-Set</th>
+            </tr>
+        </table>
+    <br />
+    <br />
+    <button id="workout-edit-start" type="button" class="btn btn-warning">Edit A Workout</button>
+    <button id="workout-delete-start" type="button" class="btn btn-danger">Delete A Workout</button>
+    <button id="workout-complete-start" type="button" class="btn btn-success">Complete A Workout!</button>
+    <br />
+    <br />
+
+    <form id="edit-workout-form" class="hidden"> <!-- class="hidden"> -->
+        <label for="workout-edit-id" class="form-label">Workout ID Number</label><br>
+        <input type="number" id="workout-edit-id" name="workout-edit-id" class="form-control w-25" min="1" max="999" required>
+        <div class="feedback" id="edit-feedback"></div>
+        <br>
+        <label for="workout-edit-type" class="form-label">Edited Exercise</label><br>
+        <input type="text" id="workout-edit-type" name="workout-edit-type" class="form-control w-25" required>
+        <br>
+        <label for="workout-edit-reps" class="form-label">Edited Sets</label><br>
+        <input type="number" id="workout-edit-reps" name="workout-edit-reps" class="form-control w-25" min="1" max="99" required>
+        <br>
+        <label for="workout-edit-sets" class="form-label">Edited Reps</label><br>
+        <input type="number" id="workout-edit-sets" name="workout-edit-sets" class="form-control w-25" min="1" max="99" required>
+        <br>
+        <button id="workout-edit-submit" type="submit" class="btn btn-success">Submit Workout</button>
+    </form>
+
+    <form id="delete-workout-form" class="hidden"> <!-- class="hidden"> -->
+        <label for="workout-delete-id" class="form-label">Workout ID Number</label><br>
+        <input type="number" id="workout-delete-id" name="workout-delete-id" class="form-control w-25" min="1" max="999" required>
+        <div class="feedback" id="delete-feedback"></div>
+        <br>
+        <button id="workout-delete-submit" type="submit" class="btn btn-warning">Delete Workout</button>
+    </form>
+
+    <form id="complete-workout-form" class="hidden"> <!-- class="hidden"> -->
+        <label for="workout-complete-id" class="form-label">Workout ID Number</label><br>
+        <input type="number" id="workout-complete-id" name="workout-complete-id" class="form-control w-25" min="1" max="999" required>
+        <div class="feedback" id="complete-feedback"></div>
+        <br>
+        <button id="workout-complete-submit" type="submit" class="btn btn-success">Complete Workout!</button>
+    </form>
+<br />
+    <h4>Timed Workouts:</h4>
+    <br />
+    <table id="timed-list" class="table table-striped w-50" >
+        <tr>
+            <th>ID</th>
+            <th>Exercise</th>
+            <th>Time Remaining</th>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <button id="timed-edit-start" type="button" class="btn btn-warning">Edit Timed Workout</button>
+    <br />
+    <br />
+
+    <form id="edit-timed-form" class="hidden"> <!-- class="hidden"> -->
+        <label for="timed-edit-id" class="form-label">Workout ID Number</label><br>
+        <input type="number" id="timed-edit-id" name="timed-edit-id" class="form-control w-25" min="1" max="999" required>
+        <div class="feedback" id="timed-feedback"></div>
+        <br>
+        <label for="timed-edit-type" class="form-label">Edited Exercise</label><br>
+        <input type="text" id="timed-edit-type" name="timed-edit-type" class="form-control w-25" required>
+        <br>
+        <button id="timed-edit-submit" type="submit" class="btn btn-success">Submit Workout</button>
+    </form>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script type="module" src="./js/index.mjs"></script>
+<script type="module" src="./js/workout.mjs"></script>
+<script type="module" src="js/timedWorkout.mjs"></script>
+</body>
+</body>
+</html>
